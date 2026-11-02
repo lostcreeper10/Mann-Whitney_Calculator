@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-serif-math), "Cambria Math", Georgia, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Consolas, monospace;
+
+  --color-navy-950: #061630;
+  --color-navy-900: #0b2545;
+  --color-navy-800: #13315c;
+  --color-navy-700: #1d4278;
+  --color-navy-600: #2a5596;
+  --color-sky-soft: #eef5fd;
+  --color-sky-line: #cfe0f5;
+  --color-sky-accent: #8db4e2;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #f4f8fd;
+  color: #0b2545;
+}
+
+/* Results reveal animation */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes arrow-pulse {
+  0%,
+  100% {
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-rise {
+  opacity: 0;
+  animation: rise-in 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+
+.animate-arrow {
+  animation: arrow-pulse 1.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-rise {
+    opacity: 1;
+    animation: none;
+  }
+  .animate-arrow {
+    animation: none;
+  }
+}
+
+/* Mathematical expressions */
+.math {
+  font-family: var(--font-serif);
+  font-variant-numeric: lining-nums tabular-nums;
+}
